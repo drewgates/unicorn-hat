@@ -5,7 +5,7 @@ from rpi_ws281x import __version__ as __rpi_ws281x__, PixelStrip, Color
 __version__ = '2.2.3'
 
 # LED strip configuration:
-LED_COUNT      = 64      # Number of LED pixels.
+LED_COUNT      = 144      # Number of LED pixels.
 LED_PIN        = 18      # GPIO pin connected to the pixels (must support PWM!).
 LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
 LED_DMA        = 10      # DMA channel to use for generating signal
@@ -102,6 +102,21 @@ PHAT = [
     [31, 23, 15, 7]
 ]
 
+QUILTY = [
+    [129, 130, 131, 132, 113, 114, 115, 116, 97, 98, 99, 100],
+    [136, 135, 134, 133, 120, 119, 118, 117, 104, 103, 102, 101],
+    [137, 138, 139, 140, 121, 122, 123, 124, 105, 106, 107, 108],
+    [144, 143, 142, 141, 128, 127, 126, 125, 112, 111, 110, 109],
+    [17, 18, 19, 20, 33, 34, 35, 36, 81, 82, 83, 84],
+    [24, 23, 22, 21, 40, 39, 38, 37, 88, 87, 86, 85],
+    [25, 26, 27, 28, 41, 42, 43, 44, 89, 90, 91, 92],
+    [32, 31, 30, 29, 48, 47, 46, 45, 93, 94, 95, 96],
+    [1, 2, 3, 4, 49, 50, 51, 52, 65, 66, 67, 68],
+    [8, 7, 6, 5, 56, 55, 54, 53, 72, 71, 70, 69],
+    [9, 10, 11, 12, 57, 58, 59, 60, 73, 34, 75, 76],
+    [16, 15, 14, 13, 64, 63, 62, 61, 80, 79, 78, 77],
+]
+
 AUTO = None
 
 def setup():
@@ -143,7 +158,7 @@ def set_layout(pixel_map = AUTO):
     global _map
 
     if pixel_map is None:
-        pixel_map = PHAT # Assume PHAT
+        pixel_map = QUILTY # Assume PHAT
         try:
             product = open("/proc/device-tree/hat/product","r").read().strip()
             if product[:11] == "Unicorn HAT":
